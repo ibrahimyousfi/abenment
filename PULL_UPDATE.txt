@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════════
+  سحب آخر التحديثات من GitHub في cPanel
+═══════════════════════════════════════════════════════════
+
+الطريقة السريعة:
+
+1. في cPanel:
+   - اذهب إلى: Git Version Control
+   - اختر المستودع: a
+   - انقر: Pull or Deploy
+   - اختر Branch: main
+   - انقر: Update from Remote
+
+2. بعد السحب، نفذ الأوامر التالية (عبر Terminal):
+   composer install --no-dev --optimize-autoloader
+   php artisan config:clear
+   php artisan cache:clear
+   php artisan view:clear
+
+═══════════════════════════════════════════════════════════
+
+الطريقة عبر Terminal/SSH:
+
+cd /home/swissleg/a
+git pull origin main
+composer install --no-dev --optimize-autoloader
+php artisan config:clear
+php artisan cache:clear
+
+═══════════════════════════════════════════════════════════
+
+ملاحظة: آخر commit يجب أن يكون:
+744f795 Add cPanel deployment files and configuration
+
+═══════════════════════════════════════════════════════════
