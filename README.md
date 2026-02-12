@@ -20,7 +20,7 @@
 - PHP >= 8.2
 - Composer
 - Node.js & NPM
-- SQLite أو MySQL/MariaDB
+- MySQL/MariaDB
 
 ## التثبيت
 
@@ -44,10 +44,7 @@ php artisan key:generate
 
 4. إعداد قاعدة البيانات:
 ```bash
-# إذا كنت تستخدم SQLite (افتراضي)
-touch database/database.sqlite
-
-# أو قم بتعديل .env لاستخدام MySQL/MariaDB
+# قم بتعديل .env بإضافة معلومات قاعدة البيانات
 php artisan migrate
 php artisan db:seed
 ```
