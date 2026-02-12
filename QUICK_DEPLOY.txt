@@ -1,0 +1,43 @@
+═══════════════════════════════════════════════════════════
+  تعليمات سريعة لنشر المشروع على cPanel
+═══════════════════════════════════════════════════════════
+
+1. رفع الملفات:
+   - ارفع جميع ملفات المشروع إلى public_html أو مجلد فرعي
+   - تأكد من رفع جميع الملفات عدا vendor و node_modules
+
+2. إعداد قاعدة البيانات:
+   - أنشئ قاعدة بيانات من cPanel
+   - سجل: اسم قاعدة البيانات، المستخدم، كلمة المرور
+
+3. إعداد ملف .env:
+   - انسخ .env.example إلى .env
+   - عدّل المعلومات التالية:
+     * DB_DATABASE=اسم_قاعدة_البيانات
+     * DB_USERNAME=اسم_المستخدم
+     * DB_PASSWORD=كلمة_المرور
+     * APP_URL=https://yourdomain.com
+     * APP_ENV=production
+     * APP_DEBUG=false
+
+4. تثبيت التبعيات (عبر SSH أو Terminal في cPanel):
+   composer install --no-dev --optimize-autoloader
+   php artisan key:generate
+   php artisan migrate --force
+   php artisan storage:link
+
+5. إعداد الصلاحيات:
+   - storage/ → 775
+   - bootstrap/cache/ → 775
+
+6. تعيين Document Root:
+   - في cPanel: Document Root Settings
+   - عيّنه إلى: public_html/public
+   (أو استخدم ملف .htaccess الموجود في الجذر)
+
+7. إنشاء حساب Super Admin:
+   php artisan db:seed --class=SuperAdminSeeder
+
+═══════════════════════════════════════════════════════════
+  للمزيد من التفاصيل، راجع ملف CPANEL_SETUP.md
+═══════════════════════════════════════════════════════════
